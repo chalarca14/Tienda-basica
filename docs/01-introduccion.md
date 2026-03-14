@@ -198,4 +198,5 @@ http://127.0.0.1:8000
 | [05-checkout.md](05-checkout.md) | Cómo se procesa una compra |
 | [06-productos.md](06-productos.md) | Cómo se muestran los productos al cliente |
 | [07-admin-productos.md](07-admin-productos.md) | Panel de administración de productos |
-| [08-autenticacion-admin.md](autenticacion-admin.md) | Sistema de login del administrador |
+| [08-autenticacion-admin.md](08-autenticacion-admin.md) | Sistema de login del administrador |
+| [09-vistas.md](09-vistas.md) | vistas |
