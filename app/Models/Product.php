@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Models;
-
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory; 
+
 
 class Product extends Model
 {
@@ -14,10 +15,17 @@ class Product extends Model
         'price',
         'stock',
         'image',
-        'active'
+        'active',
+        'category_id'
     ];
     protected $casts = [
         'price' => 'decimal:2',
         'active' => 'boolean'
     ];
+
+    public function category()
+{
+    return $this->belongsTo(Category::class);
 }
+}
+

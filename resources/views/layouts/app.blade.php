@@ -18,44 +18,46 @@ scale=1.0">
     @endif
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-gradient-to-br from-blue-100 via-white to-indigo-200 min-h-screen">
     {{-- Navbar --}}
-    <nav class="bg-white shadow-lg">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex space-x-4">
-                    <a href="{{ route('home') }}" class="font-bold text-xl">Mi
-                        Tienda</a>
+    <nav class="bg-gradient-to-r from-blue-600 to-indigo-700 shadow-lg">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex justify-between items-center h-16 text-white">
 
-                    <a href="{{ route('products.index') }}" class="hover:text-gray-
-600">Productos</a>
+            <!-- Logo -->
+            <div class="flex items-center space-x-6">
+                <a href="{{ route('home') }}" class="font-bold text-2xl tracking-wide">
+                    🛒 Mi Tienda
+                </a>
 
-                    <a href="{{ route('admin.products.index') }}" class="hover:text-
-gray-600">Administrar</a>
+                <a href="{{ route('products.index') }}" class="hover:text-gray-200 transition">
+                    Productos
+                </a>
 
-                </div>
-                {{-- Carrito --}}
-                <a href="{{ route('cart.index') }}" class="relative">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor"
-                        viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-
-                            stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-
-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0
-
-000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                    </svg>
-                    @if(session()->has('cart') && count(session('cart')) > 0)
-
-                    <span class="absolute -top-2 -right-2 bg-red-500 text-white
-rounded-full w-5 h-5 flex items-center justify-center text-xs">
-                        {{ count(session('cart')) }}
-                    </span>
-                    @endif
+                <a href="{{ route('admin.products.index') }}" class="hover:text-gray-200 transition">
+                    Administrar
                 </a>
             </div>
+
+            <!-- Carrito -->
+            <a href="{{ route('cart.index') }}" class="relative hover:scale-110 transition">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                    </path>
+                </svg>
+
+                @if(session()->has('cart') && count(session('cart')) > 0)
+                <span class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs animate-pulse">
+                    {{ count(session('cart')) }}
+                </span>
+                @endif
+            </a>
+
         </div>
-    </nav>
+    </div>
+</nav>
     {{-- Mensajes flash --}}
     @if(session('success'))
     <div class="bg-green-100 border border-green-400 text-green-700

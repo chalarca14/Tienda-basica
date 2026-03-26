@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Category;
 
 class AdminProductController extends Controller
 {
@@ -14,10 +15,10 @@ class AdminProductController extends Controller
         return view('admin.products.index', compact('products'));
     }
     public function create()
-
-    {
-        return view('admin.products.create');
-    }
+{
+    $categories = Category::all(); // 🔥 traer categorías
+    return view('admin.products.create', compact('categories'));
+}
     public function store(Request $request)
     {
         $data = $this->validateProduct($request);
@@ -29,9 +30,10 @@ class AdminProductController extends Controller
 creado correctamente.');
     }
     public function edit(Product $product)
-    {
-        return view('admin.products.edit', compact('product'));
-    }
+{
+    $categories = Category::all(); // 🔥 también aquí
+    return view('admin.products.edit', compact('product', 'categories'));
+}
     public function update(Request $request, Product $product)
     {
         $data = $this->validateProduct($request);
@@ -63,6 +65,7 @@ eliminado correctamente.');
             'price' => ['required', 'numeric', 'min:0'],
             'stock' => ['required', 'integer', 'min:0'],
             'image' => ['nullable', 'image', 'max:2048'],
+            'category_id' => ['nullable', 'exists:categories,id'],
         ]);
         $data['active'] = $request->boolean('active');
         return $data;

@@ -10,10 +10,10 @@ text-white py-2 px-4 rounded hover:bg-blue-700">
             Nuevo producto
         </a>
         {{-- Botón de cerrar sesión --}}
-<form method="POST" action="{{ route('admin.logout') }}" style="display:inline">
-    @csrf
-    <button type="submit">🚪 Cerrar sesión</button>
-</form>
+        <form method="POST" action="{{ route('admin.logout') }}" style="display:inline">
+            @csrf
+            <button type="submit">🚪 Cerrar sesión</button>
+        </form>
     </div>
     <div class="bg-white rounded-lg shadow overflow-x-auto">
         <table class="w-full text-sm">
