@@ -15,8 +15,8 @@ $isEdit = isset($product);
             required
             class="mt-1 block w-full border rounded px-3 py-2">
     </div>
-    <div>
 
+    <div>  
         <label for="description" class="block text-sm font-medium text-
 gray-700">Descripcion</label>
 
@@ -26,6 +26,28 @@ gray-700">Descripcion</label>
             rows="4"
             class="mt-1 block w-full border rounded px-3 py-2">{{ old('description', $product->description ?? '') }}</textarea>
     </div>
+    {{-- CATEGORÍA --}}
+<div>
+    <label for="category_id" class="block text-sm font-medium text-gray-700">
+        Categoría
+    </label>
+
+    <select
+        id="category_id"
+        name="category_id"
+        class="mt-1 block w-full border rounded px-3 py-2">
+
+        <option value="">Selecciona una categoría</option>
+
+        @foreach($categories as $category)
+            <option value="{{ $category->id }}"
+                {{ old('category_id', $product->category_id ?? '') == $category->id ? 'selected' : '' }}>
+                
+                {{ $category->name }}
+            </option>
+        @endforeach
+    </select>
+</div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
 
@@ -73,6 +95,7 @@ gray-700">Descripcion</label>
             <img src="{{ asset('storage/' . $product->image) }}" alt="{{$product->name }}" class="w-24 h-24 object-cover rounded">
         </div>
         @endif
+        
     </div>
     <div class="flex items-center gap-2">
         <input
